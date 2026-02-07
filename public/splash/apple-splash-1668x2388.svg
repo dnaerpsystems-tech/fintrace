@@ -1,0 +1,50 @@
+<svg width="1668" height="2388" viewBox="0 0 1668 2388" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ecfdf5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d1fae5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1668" height="2388" fill="url(#bgGrad)"/>
+
+  <!-- Center Icon -->
+  <g transform="translate(625.5, 866.1)">
+    <rect x="0" y="0" width="417" height="417" rx="91.74" fill="url(#iconGrad)"/>
+    <text
+      x="208.5"
+      y="281.475"
+      font-family="Arial, sans-serif"
+      font-size="208.5"
+      font-weight="bold"
+      fill="white"
+      text-anchor="middle"
+    >₹</text>
+  </g>
+
+  <!-- App Name -->
+  <text
+    x="834"
+    y="1527.6"
+    font-family="Arial, sans-serif"
+    font-size="100.08"
+    font-weight="bold"
+    fill="#064e3b"
+    text-anchor="middle"
+  >FinTrace</text>
+
+  <!-- Tagline -->
+  <text
+    x="834"
+    y="1611"
+    font-family="Arial, sans-serif"
+    font-size="41.7"
+    fill="#065f46"
+    text-anchor="middle"
+  >Track Every Rupee</text>
+</svg>

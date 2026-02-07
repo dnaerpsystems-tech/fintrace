@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FinTrace Color Palette */
+    --color-primary: 142 71% 45%;        /* Emerald Green - Money/Success */
+    --color-primary-dark: 160 84% 39%;
+    --color-primary-light: 158 64% 52%;
+
+    --color-income: 142 71% 45%;         /* Green - Money In */
+    --color-expense: 0 84% 60%;          /* Red - Money Out */
+    --color-transfer: 258 90% 66%;       /* Purple - Transfers */
+    --color-investment: 199 89% 48%;     /* Cyan - Investments */
+
+    /* Light Mode */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 142 71% 45%;
+    --radius: 0.75rem;
+
+    /* Chart Colors */
+    --chart-1: 142 71% 45%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 258 90% 66%;
+    --chart-4: 43 96% 56%;
+    --chart-5: 0 84% 60%;
+
+    /* iOS-specific */
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+
+    /* Bottom Nav Height */
+    --bottom-nav-height: 80px;
+    --header-height: 56px;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: contain;
+  }
+
+  /* iOS safe areas */
+  html {
+    padding-top: var(--safe-area-top);
+    padding-bottom: var(--safe-area-bottom);
+    padding-left: var(--safe-area-left);
+    padding-right: var(--safe-area-right);
+  }
+
+  /* Prevent text selection on interactive elements */
+  button, a, [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+}
+
+@layer components {
+  /* iOS-style large title */
+  .ios-large-title {
+    @apply text-[34px] font-bold tracking-tight;
+  }
+
+  .ios-title {
+    @apply text-[17px] font-semibold;
+  }
+
+  .ios-body {
+    @apply text-[17px];
+  }
+
+  .ios-caption {
+    @apply text-[13px] text-muted-foreground;
+  }
+
+  /* Card with iOS-style shadow */
+  .ios-card {
+    @apply bg-card rounded-2xl shadow-sm border border-border/50;
+  }
+
+  /* iOS-style list item */
+  .ios-list-item {
+    @apply flex items-center gap-3 px-4 py-3 bg-card active:bg-muted/50 transition-colors;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl;
+  }
+
+  /* Bottom sheet handle */
+  .sheet-handle {
+    @apply w-10 h-1 bg-muted-foreground/30 rounded-full mx-auto my-2;
+  }
+
+  /* Amount display */
+  .amount-income {
+    @apply text-[hsl(var(--color-income))];
+  }
+
+  .amount-expense {
+    @apply text-[hsl(var(--color-expense))];
+  }
+
+  .amount-transfer {
+    @apply text-[hsl(var(--color-transfer))];
+  }
+
+  /* Indian Rupee formatting */
+  .rupee {
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Animated gradient background */
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary-dark)) 50%,
+      hsl(var(--color-investment)) 100%
+    );
+  }
+
+  /* FAB (Floating Action Button) */
+  .fab {
+    @apply fixed bottom-24 right-4 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg
+           flex items-center justify-center active:scale-95 transition-transform z-50;
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 glass border-t border-border/50;
+    padding-bottom: var(--safe-area-bottom);
+    height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-1 py-2 px-4 transition-colors;
+  }
+
+  .bottom-nav-item.active {
+    @apply text-primary;
+  }
+
+  .bottom-nav-item:not(.active) {
+    @apply text-muted-foreground;
+  }
+
+  /* Page container with safe areas */
+  .page-container {
+    @apply min-h-screen pb-24;
+    padding-top: var(--safe-area-top);
+  }
+
+  /* Pull to refresh indicator */
+  .ptr-indicator {
+    @apply flex items-center justify-center h-16 text-muted-foreground;
+  }
+
+  /* Category icon wrapper */
+  .category-icon {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center text-white;
+  }
+
+  /* Progress ring */
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring circle {
+    transition: stroke-dashoffset 0.5s ease-out;
+  }
+
+  /* Skeleton animation */
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Number animation */
+  .number-animate {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Swipe action */
+  .swipe-action {
+    @apply absolute inset-y-0 flex items-center px-4;
+  }
+
+  .swipe-action-left {
+    @apply left-0 bg-primary text-primary-foreground rounded-l-xl;
+  }
+
+  .swipe-action-right {
+    @apply right-0 bg-destructive text-destructive-foreground rounded-r-xl;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Tap feedback */
+  .tap-highlight {
+    -webkit-tap-highlight-color: hsl(var(--primary) / 0.1);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light;
+  }
+
+  /* Safe area padding helpers */
+  .pt-safe {
+    padding-top: var(--safe-area-top);
+  }
+
+  .pb-safe {
+    padding-bottom: var(--safe-area-bottom);
+  }
+
+  .pb-nav {
+    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 1rem);
+  }
+}
+
+/* PWA Standalone Mode Styles */
+@media (display-mode: standalone) {
+  body {
+    /* Additional styles for installed PWA */
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

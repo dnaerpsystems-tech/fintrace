@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#10b981">
+  <title>FinTrace - Offline</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+    }
+
+    .logo svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .brand {
+      color: #10b981;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background: #f59e0b;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .status-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .message {
+      color: #64748b;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .retry-btn {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border: none;
+      padding: 16px 48px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .retry-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .retry-btn:active {
+      transform: translateY(0);
+    }
+
+    .tip {
+      margin-top: 32px;
+      padding: 16px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      color: #047857;
+      font-size: 14px;
+    }
+
+    .tip-icon {
+      display: inline-block;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+        <circle cx="256" cy="256" r="240" fill="#10b981"/>
+        <circle cx="256" cy="256" r="200" fill="#059669"/>
+        <g fill="#ffffff">
+          <rect x="160" y="140" width="192" height="28" rx="14"/>
+          <rect x="160" y="200" width="192" height="28" rx="14"/>
+          <rect x="180" y="140" width="32" height="232" rx="16"/>
+          <path d="M212 280 L320 372 L340 344 L232 252 Z" />
+          <path d="M212 168 C280 168, 320 200, 320 228 C320 256, 280 284, 212 284 L212 256 C260 256, 288 240, 288 228 C288 216, 260 196, 212 196 Z"/>
+        </g>
+        <g stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M360 320 L400 280 L400 300"/>
+          <path d="M400 280 L380 280"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1><span class="brand">Fin</span>Trace</h1>
+
+    <div class="status">
+      <div class="status-dot"></div>
+      <span class="status-text">You're offline</span>
+    </div>
+
+    <p class="message">
+      It looks like you've lost your internet connection.
+      Don't worry — your data is safely stored on your device.
+      Once you're back online, everything will sync automatically.
+    </p>
+
+    <button class="retry-btn" onclick="location.reload()">
+      Try Again
+    </button>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      Tip: Check your Wi-Fi or mobile data connection
+    </div>
+  </div>
+</body>
+</html>
